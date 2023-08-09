@@ -1,1 +1,2 @@
-# To-Do-List---Mobile-App
+To-Do List - Mobile App is simple To-Do List App, which depend on creating tasks (with title and description) and removing them. The description of every task can show and hide. To add task, you must firstly write task title and click nav arrow button, then write task description and also click this button.
+This is link to To-Do List app: https://patryk-szewczyk.github.io/To-Do-List---Mobile-App/to-do-list.html
