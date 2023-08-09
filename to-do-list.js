@@ -1,11 +1,11 @@
 window.addEventListener('load', () => {
     const userPage_Width = $(window).width();
     console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 749) {
+    if (userPage_Width > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 749) {
+    } else if (userPage_Width <= 1059) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         if (document.querySelector('div.todo-list-mobile')) {
             const mobile_TodoList = document.querySelector('div.todo-list-mobile');
@@ -35,11 +35,11 @@ window.addEventListener('resize', () => {
     const userPage_Width = $(window).width();
     console.clear();
     console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 749) {
+    if (userPage_Width > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 749) {
+    } else if (userPage_Width <= 1059) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         const userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = 'auto';
@@ -198,7 +198,7 @@ function setID_Arrow_and_Remove_Func() {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 function setAEL_Remove_Func(tdQ_El_glyphiconRemove) {
-    tdQ_El_glyphiconRemove.addEventListener('click', (e) => {
+    tdQ_El_glyphiconRemove.addEventListener('touchend', (e) => {
         removeTodoQuest(e);
     }, false);
 };
@@ -253,7 +253,7 @@ function removeNullIndex() {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 function setAEL_Arrow_Func(tdQ_El_questArrowBoxProper) {
-    tdQ_El_questArrowBoxProper.addEventListener('click', (e) => {
+    tdQ_El_questArrowBoxProper.addEventListener('touchend', (e) => {
         toggleTodoQuest(e);
     }, false);
 };
@@ -373,13 +373,13 @@ function setTargetToEventElements(i, tdQ_El_questArrowBoxProper, tdQ_El_glyphico
 }
 
 function setAfterLS_AEL_Remove_Func(i) {
-    todo_Quest_Factory.todoQuest_Array[i].AEL_Remove.addEventListener('click', (e) => {
+    todo_Quest_Factory.todoQuest_Array[i].AEL_Remove.addEventListener('touchend', (e) => {
         removeTodoQuest(e);
     }, false);
 };
 
 function setAfterLS_AEL_Arrow_Func(i) {
-    todo_Quest_Factory.todoQuest_Array[i].AEL_Arrow.addEventListener('click', (e) => {
+    todo_Quest_Factory.todoQuest_Array[i].AEL_Arrow.addEventListener('touchend', (e) => {
         toggleTodoQuest(e);
     }, false);
 };
