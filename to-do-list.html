@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" lang="PL-pl" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-do list</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <link rel="stylesheet" href="to-do-list.css" type="text/css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+    <body>
+
+        <div class="userPage-body">
+            <div class="todo-body">
+                <!--<div class="todo-header-mobileFixed">todo list</div>-->
+                <div class="todo-header-flex">todo list</div>
+                <div class="todo-menu-imitateToMobile"></div>
+                <div class="todo-menu">
+                    <div class="guideInfo-box">
+                        <div class="guideInfo-text">write title:</div>
+                    </div>
+                    <div class="input-group">
+                        <div class="inputLine">
+                            <input type="text" class="input-text" />
+                            <textarea class="input-textarea"></textarea>
+                            <div type="button" class="input-button">
+                                <div class="input-button-arrow"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="todo-list "> <!--desktop--> <!--MEGA ULTRA WAŻNE - odstęp od 'todo-list' jest bardzo ważny, poniewaz dzięki niemu dodajemy, a później zmieniemy daną klasę-->
+
+                </div>
+                <!--<div class="todo-mobileNavbar"></div>-->
+            </div>
+        </div>
+
+        <script src="to-do-list.js"></script>
+    </body>
+</html>
