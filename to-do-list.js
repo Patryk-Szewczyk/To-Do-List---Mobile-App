@@ -1,11 +1,11 @@
 window.addEventListener('load', () => {
     const userPage_Width = $(window).width();
     console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 1059) {
+    if (userPage_Width > 749) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 1059) {
+    } else if (userPage_Width <= 749) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         if (document.querySelector('div.todo-list-mobile')) {
             const mobile_TodoList = document.querySelector('div.todo-list-mobile');
@@ -35,11 +35,11 @@ window.addEventListener('resize', () => {
     const userPage_Width = $(window).width();
     console.clear();
     console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 1059) {
+    if (userPage_Width > 749) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 1059) {
+    } else if (userPage_Width <= 749) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         const userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = 'auto';
