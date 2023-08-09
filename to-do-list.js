@@ -1,11 +1,11 @@
 window.addEventListener('load', () => {
     const userPage_Width = $(window).width();
     console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 749) {
+    if (userPage_Width > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 749) {
+    } else if (userPage_Width <= 1059) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         if (document.querySelector('div.todo-list-mobile')) {
             const mobile_TodoList = document.querySelector('div.todo-list-mobile');
@@ -35,11 +35,11 @@ window.addEventListener('resize', () => {
     const userPage_Width = $(window).width();
     console.clear();
     console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 749) {
+    if (userPage_Width > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 749) {
+    } else if (userPage_Width <= 1059) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         const userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = 'auto';
@@ -198,9 +198,15 @@ function setID_Arrow_and_Remove_Func() {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 function setAEL_Remove_Func(tdQ_El_glyphiconRemove) {
-    tdQ_El_glyphiconRemove.addEventListener('touchend', (e) => {
-        removeTodoQuest(e);
-    }, false);
+    if ($(window).width() > 1059) {
+        tdQ_El_glyphiconRemove.addEventListener('click', (e) => {
+            removeTodoQuest(e);
+        }, false);
+    } else if ($(window).width() <= 1059) {
+        tdQ_El_glyphiconRemove.addEventListener('touchend', (e) => {
+            removeTodoQuest(e);
+        }, false);
+    }
 };
 function removeTodoQuest(e) {
     let removeTarget = e.target;
@@ -253,9 +259,15 @@ function removeNullIndex() {
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 function setAEL_Arrow_Func(tdQ_El_questArrowBoxProper) {
-    tdQ_El_questArrowBoxProper.addEventListener('touchend', (e) => {
-        toggleTodoQuest(e);
-    }, false);
+    if ($(window).width() > 1059) {
+        tdQ_El_questArrowBoxProper.addEventListener('click', (e) => {
+            toggleTodoQuest(e);
+        }, false);
+    } else if ($(window).width() <= 1059) {
+        tdQ_El_questArrowBoxProper.addEventListener('touchend', (e) => {
+            toggleTodoQuest(e);
+        }, false);
+    }
 };
 function toggleTodoQuest(e) {
     let arrowEl = e.target;
@@ -302,7 +314,7 @@ window.addEventListener('load', () => {
     const localStorage_GET_Todo_Array = window.localStorage.getItem('todo_Array');
     const todo_Array_Result = JSON.parse(localStorage_GET_Todo_Array);   // Przekształcanie danych tekstowych zapisanych w formacjie JSON w tablicę.
     if (todo_Array_Result != null || todo_Array_Result != undefined) {
-        console.log('LocalStorage Todo elements amount: ' + todo_Array_Result.length);
+        console.log('Downloaded LocalStorage Todo elements amount: ' + todo_Array_Result.length);
         for (i = 0; i < todo_Array_Result.length; i++) {
             todo_Quest_Factory.todoQuest_Array[i] = todo_Array_Result[i];
             afterLS_BuildTodoQuests(i);
@@ -373,16 +385,41 @@ function setTargetToEventElements(i, tdQ_El_questArrowBoxProper, tdQ_El_glyphico
 }
 
 function setAfterLS_AEL_Remove_Func(i) {
-    todo_Quest_Factory.todoQuest_Array[i].AEL_Remove.addEventListener('touchend', (e) => {
-        removeTodoQuest(e);
-    }, false);
+    if ($(window).width() > 1059) {
+        todo_Quest_Factory.todoQuest_Array[i].AEL_Remove.addEventListener('click', (e) => {
+            removeTodoQuest(e);
+        }, false);
+    } else if ($(window).width() <= 1059) {
+        todo_Quest_Factory.todoQuest_Array[i].AEL_Remove.addEventListener('touchend', (e) => {
+            removeTodoQuest(e);
+        }, false);
+    }
 };
 
 function setAfterLS_AEL_Arrow_Func(i) {
-    todo_Quest_Factory.todoQuest_Array[i].AEL_Arrow.addEventListener('touchend', (e) => {
-        toggleTodoQuest(e);
-    }, false);
+    if ($(window).width() > 1059) {
+        todo_Quest_Factory.todoQuest_Array[i].AEL_Arrow.addEventListener('click', (e) => {
+            toggleTodoQuest(e);
+        }, false);
+    } else if ($(window).width() <= 1059) {
+        todo_Quest_Factory.todoQuest_Array[i].AEL_Arrow.addEventListener('touchend', (e) => {
+            toggleTodoQuest(e);
+        }, false);
+    }
 };
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+//  W E B S I T E   R E S T A R T E R   (To protect correct AEL work)
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+//let prevWinWidthToSafeLive = $(window).width();
+window.addEventListener('resize', () => {   // Kiedy zmieniemy wielkość okna słuchacze zdarzeń nie diząłją prawidłowo, 
+    // a nie mogę ich usuwać z obiektem zdarzeń (e), w celu zamiany zdarzenia w zależności od dostosowania do wielkości ekranu (desktop/mobile).
+    //let newWinWidthToSafeLive = $(window).width();
+    //if (newWinWidthToSafeLive != prevWinWidthToSafeLive) {
+        location.reload();
+    //} else {}
+}, false);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 //  N A V B A R   F I X E D
