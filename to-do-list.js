@@ -507,9 +507,9 @@ function setAfterLS_AEL_Arrow_Func(i) {
 
 window.addEventListener('resize', () => {   // Kiedy zmieniemy wielkość okna słuchacze zdarzeń nie diząłją prawidłowo, 
     // a nie mogę ich usuwać z obiektem zdarzeń (e), w celu zamiany zdarzenia w zależności od dostosowania do wielkości ekranu (desktop/mobile).
-    //if ($(window).width() > 1059) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
+    if ($(window).width() > 1059) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
         location.reload();
-    //} else if ($(window).width() <= 1059) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
+    } else if ($(window).width() <= 1059) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
 }, false);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
