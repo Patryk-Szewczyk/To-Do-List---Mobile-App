@@ -1,11 +1,29 @@
 window.addEventListener('load', () => {
-    const userPage_Width = $(window).width();
-    console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 1059) {
+    console.log('Current window width: ' + $(window).width());
+    if ($(window).width() > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 1059) {
+        // Set desktop todo content height:
+        const todoAppBody = document.querySelector('div.todo-body');
+        const todoAppBody_CSS_Obj = window.getComputedStyle(todoAppBody, null);
+        let todoAppBody_CSS_Height = todoAppBody_CSS_Obj.getPropertyValue('height');
+        let todoAppBody_CSS_Height_Val = String(todoAppBody_CSS_Height).slice(0, -2);
+        let todoAppBod_CSS_Padding = todoAppBody_CSS_Obj.getPropertyValue('padding');
+        let todoAppBod_CSS_Padding_Val = String(todoAppBod_CSS_Padding).slice(9, 11);
+        const todoAppHeader = document.querySelector('div.todo-header-flex');
+        const todoAppHeader_CSS_Obj = window.getComputedStyle(todoAppHeader, null);
+        let todoAppHeader_CSS_Height = todoAppHeader_CSS_Obj.getPropertyValue('height');
+        let todoAppHeader_CSS_Height_Val = String(todoAppHeader_CSS_Height).slice(0, -2);
+        const todoAppMenu = document.querySelector('div.todo-menu');
+        const todoAppMenu_CSS_Obj = window.getComputedStyle(todoAppMenu, null);
+        let todoAppMenu_CSS_Height = todoAppMenu_CSS_Obj.getPropertyValue('height');
+        let todoAppMenuks_CSS_Height_Val = String(todoAppMenu_CSS_Height).slice(0, -2);
+        const todoAppList = document.querySelector('div.todo-list-desktop');
+        let todoAppList_Height_Val = todoAppBody_CSS_Height_Val - todoAppHeader_CSS_Height_Val - todoAppMenuks_CSS_Height_Val - todoAppBod_CSS_Padding_Val;
+        console.log('todoAppBody: ' + todoAppBody_CSS_Height_Val + "," + 'todoAppHeader: ' + todoAppHeader_CSS_Height_Val + ", " + 'todoAppMenu: ' + todoAppMenuks_CSS_Height_Val + ', ' + 'todoAppList: ' + todoAppList_Height_Val + ', ' + 'todoAppBod_CSS_Padding_Val: ' + todoAppBod_CSS_Padding_Val);
+        todoAppList.style.height = todoAppList_Height_Val + 'px';
+    } else if ($(window).width() <= 1059) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         if (document.querySelector('div.todo-list-mobile')) {
             const mobile_TodoList = document.querySelector('div.todo-list-mobile');
@@ -13,15 +31,13 @@ window.addEventListener('load', () => {
             const mobile_Baner = document.querySelector('div.todo-header-flex');
             const mobile_Baner_CSS_Obj = window.getComputedStyle(mobile_Baner, null);
             let mobile_Baner_CSS_Height = mobile_Baner_CSS_Obj.getPropertyValue('height');
-            String(mobile_Baner_CSS_Height);
-            let mobile_Baner_Proper_Height_Val = mobile_Baner_CSS_Height.slice(0, -2);
+            let mobile_Baner_Proper_Height_Val = String(mobile_Baner_CSS_Height).slice(0, -2);
             //console.log('Mobile \'todo header\' element height: ' + mobile_Baner_Proper_Height_Val);
             
             const mobile_Menu = document.querySelector('div.todo-menu');
             const mobile_Menu_CSS_Obj = window.getComputedStyle(mobile_Menu, null);
             let mobile_Menu_CSS_Height = mobile_Menu_CSS_Obj.getPropertyValue('height');
-            String(mobile_Menu_CSS_Height);
-            let mobile_Menu_Proper_Height_Val = mobile_Menu_CSS_Height.slice(0, -2);
+            let mobile_Menu_Proper_Height_Val = String(mobile_Menu_CSS_Height).slice(0, -2);
             //console.log('Mobile \'todo menu\' element height: ' + mobile_Menu_Proper_Height_Val);
             
             let mobile_TodoList_Height_Value = window.innerHeight - Number(mobile_Baner_Proper_Height_Val) - Number(mobile_Menu_Proper_Height_Val);
@@ -32,14 +48,32 @@ window.addEventListener('load', () => {
     }
 }, false);
 window.addEventListener('resize', () => {
-    const userPage_Width = $(window).width();
     console.clear();
-    console.log('Current window width: ' + userPage_Width);
-    if (userPage_Width > 1059) {
+    console.log('Current window width: ' + $(window).width());
+    if ($(window).width() > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
-    } else if (userPage_Width <= 1059) {
+        // Set desktop todo content height:
+        const todoAppBody = document.querySelector('div.todo-body');
+        const todoAppBody_CSS_Obj = window.getComputedStyle(todoAppBody, null);
+        let todoAppBody_CSS_Height = todoAppBody_CSS_Obj.getPropertyValue('height');
+        let todoAppBody_CSS_Height_Val = String(todoAppBody_CSS_Height).slice(0, -2);
+        let todoAppBod_CSS_Padding = todoAppBody_CSS_Obj.getPropertyValue('padding');
+        let todoAppBod_CSS_Padding_Val = String(todoAppBod_CSS_Padding).slice(9, 11);
+        const todoAppHeader = document.querySelector('div.todo-header-flex');
+        const todoAppHeader_CSS_Obj = window.getComputedStyle(todoAppHeader, null);
+        let todoAppHeader_CSS_Height = todoAppHeader_CSS_Obj.getPropertyValue('height');
+        let todoAppHeader_CSS_Height_Val = String(todoAppHeader_CSS_Height).slice(0, -2);
+        const todoAppMenu = document.querySelector('div.todo-menu');
+        const todoAppMenu_CSS_Obj = window.getComputedStyle(todoAppMenu, null);
+        let todoAppMenu_CSS_Height = todoAppMenu_CSS_Obj.getPropertyValue('height');
+        let todoAppMenuks_CSS_Height_Val = String(todoAppMenu_CSS_Height).slice(0, -2);
+        const todoAppList = document.querySelector('div.todo-list-desktop');
+        let todoAppList_Height_Val = todoAppBody_CSS_Height_Val - todoAppHeader_CSS_Height_Val - todoAppMenuks_CSS_Height_Val - todoAppBod_CSS_Padding_Val;
+        console.log('todoAppBody: ' + todoAppBody_CSS_Height_Val + "," + 'todoAppHeader: ' + todoAppHeader_CSS_Height_Val + ", " + 'todoAppMenu: ' + todoAppMenuks_CSS_Height_Val + ', ' + 'todoAppList: ' + todoAppList_Height_Val + ', ' + 'todoAppBod_CSS_Padding_Val: ' + todoAppBod_CSS_Padding_Val);
+        todoAppList.style.height = todoAppList_Height_Val + 'px';
+    } else if ($(window).width() <= 1059) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         const userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = 'auto';
@@ -49,14 +83,12 @@ window.addEventListener('resize', () => {
             const mobile_Baner = document.querySelector('div.todo-header-flex');
             const mobile_Baner_CSS_Obj = window.getComputedStyle(mobile_Baner, null);
             let mobile_Baner_CSS_Height = mobile_Baner_CSS_Obj.getPropertyValue('height');
-            String(mobile_Baner_CSS_Height);
-            let mobile_Baner_Proper_Height_Val = mobile_Baner_CSS_Height.slice(0, -2);
+            let mobile_Baner_Proper_Height_Val = String(mobile_Baner_CSS_Height).slice(0, -2);
             
             const mobile_Menu = document.querySelector('div.todo-menu');
             const mobile_Menu_CSS_Obj = window.getComputedStyle(mobile_Menu, null);
             let mobile_Menu_CSS_Height = mobile_Menu_CSS_Obj.getPropertyValue('height');
-            String(mobile_Menu_CSS_Height);
-            let mobile_Menu_Proper_Height_Val = mobile_Menu_CSS_Height.slice(0, -2);
+            let mobile_Menu_Proper_Height_Val = String(mobile_Menu_CSS_Height).slice(0, -2);
             
             let mobile_TodoList_Height_Value = window.innerHeight - Number(mobile_Baner_Proper_Height_Val) - Number(mobile_Menu_Proper_Height_Val);
             
@@ -81,31 +113,92 @@ let todo_Quest_Factory = {
     inputButton_Step: 1,
     todoQuest_Array: [],
     setAEL_InputButtonEl: function() {
-        this.inputButtonEl.addEventListener('click', () => {
-            if (this.inputButton_Step == 1) {   // Zatwierdź: Tytuł
-                //console.log('Input switch: ' + this.inputButton_Step);
-                this.inputButton_Step = 2;
-                this.guideText.textContent = 'write description:';
-                this.inputTitleEL.style.display = 'none';
-                this.inputDescriptionEl.style.display = 'block';
-                this.currentTitle_Val = this.inputTitleEL.value;
-                console.log('Current title: '+ this.currentTitle_Val);
-                this.inputTitleEL.value = '';
-            } else if (this.inputButton_Step == 2) {   // Zatwierdź: Opis
-                //console.log('Input switch: ' + this.inputButton_Step);
-                this.inputButton_Step = 1;
-                this.guideText.textContent = 'write title:';
-                this.inputTitleEL.style.display = 'block';
-                this.inputDescriptionEl.style.display = 'none';
-                this.currentDescription_Val = this.inputDescriptionEl.value;
-                console.log('Current description: '+ this.currentDescription_Val);
-                buildTodoQuest_InfoArray(this.currentTitle_Val, this.currentDescription_Val);
-                this.inputDescriptionEl.value = '';
-            }
+        if ($(window).width() > 1059) {
+            this.inputButtonEl.addEventListener('click', () => {   // CLICK | Desktop
+                if (this.inputButton_Step == 1) {   // Zatwierdź: Tytuł
+                    //console.log('Input switch: ' + this.inputButton_Step);
+                    this.inputButton_Step = 2;
+                    this.guideText.textContent = 'write description:';
+                    this.inputTitleEL.style.display = 'none';
+                    this.inputDescriptionEl.style.display = 'block';
+                    this.currentTitle_Val = this.inputTitleEL.value;
+                    console.log('Current title: '+ this.currentTitle_Val);
+                    this.inputTitleEL.value = '';
+                } else if (this.inputButton_Step == 2) {   // Zatwierdź: Opis
+                    //console.log('Input switch: ' + this.inputButton_Step);
+                    this.inputButton_Step = 1;
+                    this.guideText.textContent = 'write title:';
+                    this.inputTitleEL.style.display = 'block';
+                    this.inputDescriptionEl.style.display = 'none';
+                    this.currentDescription_Val = this.inputDescriptionEl.value;
+                    console.log('Current description: '+ this.currentDescription_Val);
+                    buildTodoQuest_InfoArray(this.currentTitle_Val, this.currentDescription_Val);
+                    this.inputDescriptionEl.value = '';
+                }
+            }, false);
+        } else if ($(window).width() <= 1059) {
+            this.inputButtonEl.addEventListener('touchstart', () => {   // TOUCHSTART | Mobile
+                if (this.inputButton_Step == 1) {   // Zatwierdź: Tytuł
+                    //console.log('Input switch: ' + this.inputButton_Step);
+                    this.inputButton_Step = 2;
+                    this.guideText.textContent = 'write description:';
+                    this.inputTitleEL.style.display = 'none';
+                    this.inputDescriptionEl.style.display = 'block';
+                    this.currentTitle_Val = this.inputTitleEL.value;
+                    console.log('Current title: '+ this.currentTitle_Val);
+                    this.inputTitleEL.value = '';
+                } else if (this.inputButton_Step == 2) {   // Zatwierdź: Opis
+                    //console.log('Input switch: ' + this.inputButton_Step);
+                    this.inputButton_Step = 1;
+                    this.guideText.textContent = 'write title:';
+                    this.inputTitleEL.style.display = 'block';
+                    this.inputDescriptionEl.style.display = 'none';
+                    this.currentDescription_Val = this.inputDescriptionEl.value;
+                    console.log('Current description: '+ this.currentDescription_Val);
+                    buildTodoQuest_InfoArray(this.currentTitle_Val, this.currentDescription_Val);
+                    this.inputDescriptionEl.value = '';
+                }
+            }, false);
+        }
+    },
+    setAEL_InputsTextEL: function() {
+        this.inputTitleEL.addEventListener('keypress', (e) => {   // ENTER KEY
+            keyName = e.key;
+            if (String(keyName) === 'Enter') {
+                if (this.inputButton_Step == 1) {
+                    this.inputButton_Step = 2;
+                    this.guideText.textContent = 'write description:';
+                    this.inputTitleEL.style.display = 'none';
+                    this.inputDescriptionEl.style.display = 'block';
+                    this.currentTitle_Val = this.inputTitleEL.value;
+                    console.log('Current title: '+ this.currentTitle_Val);
+                    this.inputTitleEL.value = '';
+                    this.inputDescriptionEl.select();
+                } else {}
+            } else {}
+            console.log('Key name: ' + keyName);
+        }, false);
+        this.inputDescriptionEl.addEventListener('keypress', (e) => {   // ENTER KEY
+            keyName = e.key;
+            if (String(keyName) === 'Enter') {
+                if (this.inputButton_Step == 2) {
+                    this.inputButton_Step = 1;
+                    this.guideText.textContent = 'write title:';
+                    this.inputTitleEL.style.display = 'block';
+                    this.inputDescriptionEl.style.display = 'none';
+                    this.currentDescription_Val = this.inputDescriptionEl.value;
+                    console.log('Current description: '+ this.currentDescription_Val);
+                    buildTodoQuest_InfoArray(this.currentTitle_Val, this.currentDescription_Val);
+                    this.inputDescriptionEl.value = '';
+                    this.inputTitleEL.select();
+                } else {}
+            } else {}
+            console.log('Key name: ' + keyName);
         }, false);
     }
 };
 todo_Quest_Factory.setAEL_InputButtonEl();
+todo_Quest_Factory.setAEL_InputsTextEL();
 
 function buildTodoQuest_InfoArray(curTit, curDes) {
     let tdQ_El_todoListQuestBody = document.createElement('div');
@@ -414,9 +507,9 @@ function setAfterLS_AEL_Arrow_Func(i) {
 
 window.addEventListener('resize', () => {   // Kiedy zmieniemy wielkość okna słuchacze zdarzeń nie diząłją prawidłowo, 
     // a nie mogę ich usuwać z obiektem zdarzeń (e), w celu zamiany zdarzenia w zależności od dostosowania do wielkości ekranu (desktop/mobile).
-    if ($(window).width() > 1059) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
+    //if ($(window).width() > 1059) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
         location.reload();
-    } else if ($(window).width() <= 1059) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
+    //} else if ($(window).width() <= 1059) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
 }, false);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
