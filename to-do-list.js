@@ -1,5 +1,5 @@
 // Max value of mobile witdh:
-const mediaVal = 1059;
+let mediaVal = 1059;
 
 window.addEventListener('load', () => {
     console.log('Current window width: ' + $(window).width());
@@ -475,9 +475,9 @@ function setAfterLS_AEL_Arrow_Func(i) {
 
 window.addEventListener('resize', () => {   // Kiedy zmieniemy wielkość okna słuchacze zdarzeń nie diząłją prawidłowo, 
     // a nie mogę ich usuwać z obiektem zdarzeń (e), w celu zamiany zdarzenia w zależności od dostosowania do wielkości ekranu (desktop/mobile).
-    //if ($(window).width() > mediaVal) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
+    if ($(window).width() > mediaVal) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
         location.reload();
-    //} else if ($(window).width() <= mediaVal) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
+    } else if ($(window).width() <= mediaVal) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
     // Nie wiem dlaczego, ale powyższa instrukcja warunkowa nie działa.
 }, false);
 
