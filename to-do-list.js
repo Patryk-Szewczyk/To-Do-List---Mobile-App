@@ -545,8 +545,3 @@ const todo_Menu_Obj = {
 todo_Menu_Obj.setTodoMenu_ImitateEl();
 todo_Menu_Obj.setTodoMenuEl();
 window.addEventListener('scroll', todo_Menu_Obj.checkCurrentUserHeight, false);
-
-
-
-//  U W A G A !  Dodawanie opisu do elementów zrób przez jQuery, aby kiedy użytkownik naciśnie ENTER, 
-//               do tegstu dodawał się znacznik <br>.
