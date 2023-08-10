@@ -1,7 +1,6 @@
 // Max value of mobile witdh:
 const mediaVal = 1059;
 
-//
 window.addEventListener('load', () => {
     console.log('Current window width: ' + $(window).width());
     if ($(window).width() > mediaVal) {
