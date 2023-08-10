@@ -42,8 +42,8 @@ body::-webkit-scrollbar {
             background-image: linear-gradient(to right, rgb(99, 141, 219), rgb(63, 107, 188), rgb(99, 141, 219));  /*rgb(125, 166, 244), rgb(73, 133, 244), rgb(125, 166, 244)*/
             color: aliceblue;
             font-size: 145%;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-weight: 600;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 1.2px 1.2px 1px #222, -1.2px -1.2px 1px #222, -1.2px 1.2px 1px #222, 1.2px -1.2px 1px #222;
@@ -104,6 +104,7 @@ body::-webkit-scrollbar {
                         border: 0px solid red;
                         box-shadow: 0px 0px 2px #222;
                         border-radius: 7px;
+                        outline: none;
                     }
                         input {
                             height: 100%;
@@ -111,16 +112,20 @@ body::-webkit-scrollbar {
                         }
                         .input-text {
                             width: 200px;
+                            height: 100%;
                             padding: 0px 5px;
                             color: #222;
+                            font-size: 110%;
                             font-weight: 600;
                             border-color: #333;
                             border-style: solid;
                             border-width: 2.5px 0px 2.5px 2.5px;
                             border-radius: 7px 0px 0px 7px;
+                            outline: none;
                         }
                         .input-button {
                             width: 30px;
+                            height: 100%;
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -129,6 +134,7 @@ body::-webkit-scrollbar {
                             border-style: solid;
                             border-width: 2.5px 2.5px 2.5px 2.5px;
                             border-radius: 0px 7px 7px 0px;
+                            outline: none;
                         }
                         .input-button:hover {
                             cursor: pointer;
@@ -150,18 +156,24 @@ body::-webkit-scrollbar {
                             }
                         .input-textarea {
                             width: 200px;
-                            padding: 0px 5px;
+                            height: 100%;
+                            padding: 2px 5px;
                             display: none;
                             color: #222;
+                            font-size: 110%;
                             font-weight: 600;
                             border-color: #333;
                             border-style: solid;
                             border-width: 2.5px 0px 2.5px 2.5px;
                             border-radius: 7px 0px 0px 7px;
+                            outline: none;
+                        }
+                        .input-textarea::-webkit-scrollbar {
+                            width: 0px;
                         }
         .todo-list-mobile {
             width: 100%;
-            height: auto;
+            height: 100%;  /*MEGA WAŻNE*/
             padding: 30px 30px 10px 30px;
             display: grid;  /* UWAGA: W wersji na desktop: none - height będzie zmien*/
             grid-template-columns: auto;
@@ -323,7 +335,7 @@ body::-webkit-scrollbar {
             }
             .todo-header-flex {
                 width: 100%;
-                height: 17%;
+                height: 100px;  /*17%*/
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -340,7 +352,7 @@ body::-webkit-scrollbar {
             }
             .todo-menu {
                 width: 100%;
-                height: 15%;
+                height: 80px;  /*15%*/
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -352,10 +364,6 @@ body::-webkit-scrollbar {
                 border-bottom: 6px solid #d4d4d4;
                 box-shadow: none;
             }
-                .input-textarea {
-                    display: none;
-                }
-            
                 .todo-menu-imitateToMobile {
                     display: none;
                 }
@@ -366,16 +374,16 @@ body::-webkit-scrollbar {
                     justify-content: flex-end;
                     align-items: center;
                     color: #222;
-                    font-size: 150%;
-                    font-family: Verdana, Geneva, Tahoma, sans-serif;
-                    font-weight: 600;
+                    font-size: 160%;
+                    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                    font-weight: 700;
                     text-transform: uppercase;
                     letter-spacing: 0px;
                     border: 0px solid red;
                 }
-                    .guideInfo-text::selection {
-                        background-color: rgba(0,0,0,0.0);
-                    }
+                .guideInfo-text::selection {
+                    background-color: rgba(0,0,0,0.0);
+                }
                     .input-group {
                         width: 100%;
                         height: 100%;
@@ -384,9 +392,18 @@ body::-webkit-scrollbar {
                         align-items: center;
                         border: 0px solid red;
                     }
+                        .inputLine {
+                            height: 35px;
+                        }
+                            .input-button {
+                                width: 35px;
+                            }
+                            .input-textarea {
+                                display: none;
+                            }
             .todo-list-desktop {
                 width: 100%;
-                height: 68% !important;  /*Nie wiem co przesłania to 'height'...*/
+                /*height: 68% !important;*/
                 padding: 30px 30px 0px 30px;
                 display: inline-block;
                 /*flex-wrap: wrap;
