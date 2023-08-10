@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
-    console.log('Current window width: ' + $(window).width());
-    if ($(window).width() > 1059) {
+    const userPage_Width = $(window).width();
+    console.log('Current window width: ' + userPage_Width);
+    if (userPage_Width > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
@@ -9,21 +10,24 @@ window.addEventListener('load', () => {
         const todoAppBody_CSS_Obj = window.getComputedStyle(todoAppBody, null);
         let todoAppBody_CSS_Height = todoAppBody_CSS_Obj.getPropertyValue('height');
         let todoAppBody_CSS_Height_Val = String(todoAppBody_CSS_Height).slice(0, -2);
-        let todoAppBod_CSS_Padding = todoAppBody_CSS_Obj.getPropertyValue('padding');
-        let todoAppBod_CSS_Padding_Val = String(todoAppBod_CSS_Padding).slice(9, 11);
+
         const todoAppHeader = document.querySelector('div.todo-header-flex');
         const todoAppHeader_CSS_Obj = window.getComputedStyle(todoAppHeader, null);
         let todoAppHeader_CSS_Height = todoAppHeader_CSS_Obj.getPropertyValue('height');
         let todoAppHeader_CSS_Height_Val = String(todoAppHeader_CSS_Height).slice(0, -2);
+
         const todoAppMenu = document.querySelector('div.todo-menu');
         const todoAppMenu_CSS_Obj = window.getComputedStyle(todoAppMenu, null);
         let todoAppMenu_CSS_Height = todoAppMenu_CSS_Obj.getPropertyValue('height');
         let todoAppMenuks_CSS_Height_Val = String(todoAppMenu_CSS_Height).slice(0, -2);
+
         const todoAppList = document.querySelector('div.todo-list-desktop');
-        let todoAppList_Height_Val = todoAppBody_CSS_Height_Val - todoAppHeader_CSS_Height_Val - todoAppMenuks_CSS_Height_Val - todoAppBod_CSS_Padding_Val;
-        console.log('todoAppBody: ' + todoAppBody_CSS_Height_Val + "," + 'todoAppHeader: ' + todoAppHeader_CSS_Height_Val + ", " + 'todoAppMenu: ' + todoAppMenuks_CSS_Height_Val + ', ' + 'todoAppList: ' + todoAppList_Height_Val + ', ' + 'todoAppBod_CSS_Padding_Val: ' + todoAppBod_CSS_Padding_Val);
+        let todoAppList_Height_Val = todoAppBody_CSS_Height_Val - todoAppHeader_CSS_Height_Val - todoAppMenuks_CSS_Height_Val;
+        console.log('todoAppBody: ' + todoAppBody_CSS_Height_Val + "," + 'todoAppHeader: ' + todoAppHeader_CSS_Height_Val + ", " + 'todoAppMenu: ' + todoAppMenuks_CSS_Height_Val + ', ' + 'todoAppList: ' + todoAppList_Height_Val);
         todoAppList.style.height = todoAppList_Height_Val + 'px';
-    } else if ($(window).width() <= 1059) {
+        
+        let todoAppList_Height = 0;
+    } else if (userPage_Width <= 1059) {
         $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
         if (document.querySelector('div.todo-list-mobile')) {
             const mobile_TodoList = document.querySelector('div.todo-list-mobile');
@@ -48,35 +52,39 @@ window.addEventListener('load', () => {
     }
 }, false);
 window.addEventListener('resize', () => {
+    const userPage_Width = $(window).width();
     console.clear();
-    console.log('Current window width: ' + $(window).width());
-    if ($(window).width() > 1059) {
+    console.log('Current window width: ' + userPage_Width);
+    if (userPage_Width > 1059) {
         $('.todo-list').removeClass('todo-list-mobile').addClass('todo-list-desktop');
         let userWindow = document.querySelector('div.userPage-body');
         userWindow.style.height = window.innerHeight + 'px';
+
+        
+    } else if (userPage_Width <= 1059) {
+        $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
+        const userWindow = document.querySelector('div.userPage-body');
+        userWindow.style.height = 'auto';
         // Set desktop todo content height:
         const todoAppBody = document.querySelector('div.todo-body');
         const todoAppBody_CSS_Obj = window.getComputedStyle(todoAppBody, null);
         let todoAppBody_CSS_Height = todoAppBody_CSS_Obj.getPropertyValue('height');
         let todoAppBody_CSS_Height_Val = String(todoAppBody_CSS_Height).slice(0, -2);
-        let todoAppBod_CSS_Padding = todoAppBody_CSS_Obj.getPropertyValue('padding');
-        let todoAppBod_CSS_Padding_Val = String(todoAppBod_CSS_Padding).slice(9, 11);
+
         const todoAppHeader = document.querySelector('div.todo-header-flex');
         const todoAppHeader_CSS_Obj = window.getComputedStyle(todoAppHeader, null);
         let todoAppHeader_CSS_Height = todoAppHeader_CSS_Obj.getPropertyValue('height');
         let todoAppHeader_CSS_Height_Val = String(todoAppHeader_CSS_Height).slice(0, -2);
+
         const todoAppMenu = document.querySelector('div.todo-menu');
         const todoAppMenu_CSS_Obj = window.getComputedStyle(todoAppMenu, null);
         let todoAppMenu_CSS_Height = todoAppMenu_CSS_Obj.getPropertyValue('height');
         let todoAppMenuks_CSS_Height_Val = String(todoAppMenu_CSS_Height).slice(0, -2);
+
         const todoAppList = document.querySelector('div.todo-list-desktop');
-        let todoAppList_Height_Val = todoAppBody_CSS_Height_Val - todoAppHeader_CSS_Height_Val - todoAppMenuks_CSS_Height_Val - todoAppBod_CSS_Padding_Val;
-        console.log('todoAppBody: ' + todoAppBody_CSS_Height_Val + "," + 'todoAppHeader: ' + todoAppHeader_CSS_Height_Val + ", " + 'todoAppMenu: ' + todoAppMenuks_CSS_Height_Val + ', ' + 'todoAppList: ' + todoAppList_Height_Val + ', ' + 'todoAppBod_CSS_Padding_Val: ' + todoAppBod_CSS_Padding_Val);
+        let todoAppList_Height_Val = todoAppBody_CSS_Height_Val - todoAppHeader_CSS_Height_Val - todoAppMenuks_CSS_Height_Val;
+        console.log('todoAppBody: ' + todoAppBody_CSS_Height_Val + "," + 'todoAppHeader: ' + todoAppHeader_CSS_Height_Val + ", " + 'todoAppMenu: ' + todoAppMenuks_CSS_Height_Val + ', ' + 'todoAppList: ' + todoAppList_Height_Val);
         todoAppList.style.height = todoAppList_Height_Val + 'px';
-    } else if ($(window).width() <= 1059) {
-        $('.todo-list').removeClass('todo-list-desktop').addClass('todo-list-mobile');
-        const userWindow = document.querySelector('div.userPage-body');
-        userWindow.style.height = 'auto';
         if (document.querySelector('div.todo-list-mobile')) {
             const mobile_TodoList = document.querySelector('div.todo-list-mobile');
 
@@ -507,9 +515,9 @@ function setAfterLS_AEL_Arrow_Func(i) {
 
 window.addEventListener('resize', () => {   // Kiedy zmieniemy wielkość okna słuchacze zdarzeń nie diząłją prawidłowo, 
     // a nie mogę ich usuwać z obiektem zdarzeń (e), w celu zamiany zdarzenia w zależności od dostosowania do wielkości ekranu (desktop/mobile).
-    if ($(window).width() > 1059) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
+    //if ($(window).width() > 1059) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
         location.reload();
-    } else if ($(window).width() <= 1059) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
+    //} else if ($(window).width() <= 1059) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
 }, false);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
