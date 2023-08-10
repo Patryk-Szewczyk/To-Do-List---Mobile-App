@@ -412,13 +412,11 @@ function setAfterLS_AEL_Arrow_Func(i) {
 //  W E B S I T E   R E S T A R T E R   (To protect correct AEL work)
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-//let prevWinWidthToSafeLive = $(window).width();
 window.addEventListener('resize', () => {   // Kiedy zmieniemy wielkość okna słuchacze zdarzeń nie diząłją prawidłowo, 
     // a nie mogę ich usuwać z obiektem zdarzeń (e), w celu zamiany zdarzenia w zależności od dostosowania do wielkości ekranu (desktop/mobile).
-    //let newWinWidthToSafeLive = $(window).width();
-    //if (newWinWidthToSafeLive != prevWinWidthToSafeLive) {
+    if ($(window).width() > 1059) {   // Kiedy osiągniemy: Desktop Web Design - odświerzaj stronę za każdą zmianę wielkości okna
         location.reload();
-    //} else {}
+    } else if ($(window).width() <= 1059) {}   // Kiedy osiągniemy: Mobile Web Design - nie odświerzaj strony
 }, false);
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
